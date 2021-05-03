@@ -1,7 +1,7 @@
 function App() {
   return (
     <div className="App">
-      <h1>TEST</h1>
+      <h1>/learn react/i</h1>
     </div>
   );
 }
