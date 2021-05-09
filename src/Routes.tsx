@@ -5,12 +5,16 @@ import Login from './components/Login';
 import BookPresenter from "./components/BookPresenter";
 import APIAccesser from "./components/APIAccesser";
 import BookList from "./components/BookList";
+import PrimarySearchAppBar from './components/Header';
 
 const api = APIAccesser.getInstance();
 
 function Routes() {
     return (
         <Switch>
+            <Route>
+              <PrimarySearchAppBar/>
+            </Route>
             <Route exact path="/">
                 <App/>
             </Route>
