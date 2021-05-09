@@ -1,34 +1,41 @@
 import React from 'react';
-import {BrowserRouter as Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import App from './App';
 import Login from './components/Login';
 import BookPresenter from "./components/BookPresenter";
 import APIAccesser from "./components/APIAccesser";
 import BookList from "./components/BookList";
 import PrimarySearchAppBar from './components/Header';
+import NotFound from './components/NotFound';
 
 const api = APIAccesser.getInstance();
 
 function Routes() {
     return (
+      <Router>
         <Switch>
-            <Route>
-              <PrimarySearchAppBar/>
-            </Route>
             <Route exact path="/">
+                <PrimarySearchAppBar/>
                 <App/>
             </Route>
 
             <Route exact path="/login">
+                <PrimarySearchAppBar/>
                 <Login/>
             </Route>
 
             <Route exact path="/books">
+                <PrimarySearchAppBar/>
                 <BookList books={api.GetBooks()}/>
             </Route>
 
             <Route exact path="/books/:id" component={BookPresenter}/>
+
+            <Route>
+              <NotFound/>
+            </Route>
         </Switch>
+      </Router>
     )
 }
 
