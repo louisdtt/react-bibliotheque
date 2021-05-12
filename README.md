@@ -1,5 +1,5 @@
 # Testing
-Run `yarn install` then run `yarn cypress open-ct`
+Run `yarn install` then run `yarn cypress open-ct`, click on a test to run it.
 
 # Getting Started with Create React App
 
