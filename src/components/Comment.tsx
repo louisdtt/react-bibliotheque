@@ -1,46 +1,36 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {Avatar, Grid} from "@material-ui/core";
+import APIAccesser from "./APIAccesser";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            '& .MuiTextField-root': {
-                margin: theme.spacing(1),
-                width: '25ch',
-            },
-        },
-    }),
-);
+const api = APIAccesser.getInstance();
 
- function Comment() {
-    const classes = useStyles();
-    const [value, setValue] = React.useState('Controlled');
+export interface Comment {
+    id: number;
+    title: string;
+    content: string;
+    customer_id: number;
+    book_id: number;
+}
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value);
-    };
-
+function CommentElement({...comment}: Comment) {
+    let user = api.GetUsers().find(value => value.id == comment.customer_id);
+    let name = ""
+    if (user) {
+        name = user.name
+    }
+    console.log(name)
     return (
-        <form className={classes.root} noValidate autoComplete="off">
-            <div>
-                <TextField
-                    id="standard-multiline-static"
-                    label="Multiline"
-                    multiline
-                    rows={4}
-                    placeholder="Add a public comment..."
-                />
-                <Button variant="contained">
-                    Cancel
-                </Button>
-                <Button variant="contained" color="primary">
-                    Comment
-                </Button>
-            </div>
-        </form>
+        <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+                <Avatar alt="Remy Sharp" src={`https://eu.ui-avatars.com/api/?name=${name}`} />
+            </Grid>
+            <Grid>
+                <h4 style={{ margin: 0, textAlign: "left" }}>{comment.title}</h4>
+                <p style={{ textAlign: "left" }}>
+                    {comment.content}
+                </p>
+            </Grid>
+        </Grid>
     );
 }
 
-export default Comment;
+export default CommentElement;

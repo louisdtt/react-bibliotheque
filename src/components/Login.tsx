@@ -8,6 +8,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 
+export interface User {
+  id: number,
+  name: string,
+  age: number,
+  category: string
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {

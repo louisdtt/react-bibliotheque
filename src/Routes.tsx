@@ -6,9 +6,11 @@ import BookPresenter from "./components/BookPresenter";
 import APIAccesser from "./components/APIAccesser";
 import BookList from "./components/BookList";
 import PrimarySearchAppBar from './components/Header';
-import Comment from "./components/Comment";
+import AddComment from "./components/AddComment";
 import NotFound from './components/NotFound';
 import {Book} from "@material-ui/icons";
+import Comment from "./components/Comment";
+import CommentList from "./components/CommentList";
 
 const api = APIAccesser.getInstance();
 
@@ -37,7 +39,8 @@ function Routes() {
                         <React.Fragment>
                             <PrimarySearchAppBar/>
                             <BookPresenter {...props} />
-                            <Comment/>
+                            <AddComment/>
+                            <CommentList comments={api.GetComments()}/>
                         </React.Fragment>
                     }
                 />
