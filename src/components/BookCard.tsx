@@ -5,11 +5,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Book} from "./BookPresenter";
+import { Link } from 'react-router-dom';
 
 function BookCard({...book}: Book) {
     return (
         <div className="book">
-            <a href={`/books/${book.id}`}>Livre</a><Card className="test">
+            <Link to={`/books/${book.id}`}>
+            <Card className="test">
                 <CardActionArea>
                     <CardMedia
                         component="img"
@@ -26,11 +28,12 @@ function BookCard({...book}: Book) {
                             {book.category}
                         </Typography>
                     </CardContent>
-                    <Button variant="contained" color="primary">
-                        Borrow
-                    </Button>
                 </CardActionArea>
             </Card>
+        </Link>
+        <Button variant="contained" color="primary">
+            Borrow
+        </Button>
         </div>
     );
 }
