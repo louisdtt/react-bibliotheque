@@ -16,7 +16,6 @@ interface TParams {
 const api = APIAccesser.getInstance();
 
 function BookPresenter({match}: RouteComponentProps<TParams>) {
-    const test = 2;
     const book = api.GetBooks().find(book => book.id == +match.params.id);
     if (book) {
         return (

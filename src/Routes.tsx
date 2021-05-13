@@ -6,36 +6,47 @@ import BookPresenter from "./components/BookPresenter";
 import APIAccesser from "./components/APIAccesser";
 import BookList from "./components/BookList";
 import PrimarySearchAppBar from './components/Header';
+import Comment from "./components/Comment";
 import NotFound from './components/NotFound';
+import {Book} from "@material-ui/icons";
 
 const api = APIAccesser.getInstance();
 
 function Routes() {
     return (
-      <Router>
-        <Switch>
-            <Route exact path="/">
-                <PrimarySearchAppBar/>
-                <App/>
-            </Route>
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <PrimarySearchAppBar/>
+                    <App/>
+                </Route>
 
-            <Route exact path="/login">
-                <PrimarySearchAppBar/>
-                <Login/>
-            </Route>
+                <Route exact path="/login">
+                    <PrimarySearchAppBar/>
+                    <Login/>
+                </Route>
 
-            <Route exact path="/books">
-                <PrimarySearchAppBar/>
-                <BookList books={api.GetBooks()}/>
-            </Route>
+                <Route exact path="/books">
+                    <PrimarySearchAppBar/>
+                    <BookList books={api.GetBooks()}/>
+                </Route>
 
-            <Route exact path="/books/:id" component={BookPresenter}/>
+                <Route
+                    path="/books/:id"
+                    render={(props) =>
+                        <React.Fragment>
+                            <PrimarySearchAppBar/>
+                            <BookPresenter {...props} />
+                            <Comment/>
+                        </React.Fragment>
+                    }
+                />
 
-            <Route>
-              <NotFound/>
-            </Route>
-        </Switch>
-      </Router>
+                <Route>
+                    <NotFound/>
+                </Route>
+            </Switch>
+        </Router>
     )
 }
 
