@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import App from './App';
+import App from './components/App';
 import Login from './components/Login';
 import BookPresenter from "./components/BookPresenter";
 import APIAccesser from "./components/APIAccesser";
