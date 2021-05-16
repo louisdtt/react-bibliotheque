@@ -36,7 +36,7 @@ function Routes() {
                         <React.Fragment>
                             <PrimarySearchAppBar/>
                             <BookPresenter {...props} />
-                            <AddComment/>
+                            <AddComment {...props}/>
                             <CommentList {...props}/>
                         </React.Fragment>
                     }

@@ -2,7 +2,6 @@ import {Comment} from "./Comment";
 import CommentElement from "./Comment";
 import {Divider} from "@material-ui/core";
 import React, {useEffect, useState} from "react";
-import {Book} from "./BookPresenter";
 import axios from "axios";
 import {RouteComponentProps} from "react-router-dom";
 
@@ -24,10 +23,10 @@ function CommentList({match}: RouteComponentProps<TParams>) {
             setComments(response.data.filter(comment => comment.book.id == +match.params.id));
         }).catch((ex) => {
             let error = 'error';
+            console.log(ex)
             setError(error);
         });
     }, []);
-    console.log("Comments", comments)
     return (
         <div className="">
             {comments?.map(comment => (

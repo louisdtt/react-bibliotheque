@@ -31,9 +31,6 @@ function BookCard({...book}: Book) {
                 </CardActionArea>
             </Card>
         </Link>
-        <Button variant="contained" color="primary">
-            Borrow
-        </Button>
         </div>
     );
 }
