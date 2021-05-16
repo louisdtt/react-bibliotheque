@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import App from './components/App';
 import Login from './components/Login';
 import BookPresenter from "./components/BookPresenter";
 import BookList from "./components/BookList";
@@ -13,13 +12,14 @@ import CommentList from "./components/CommentList";
 import Register from './components/Register';
 import LoadingSpinner from "./components/LoadingSpinner";
 
+
 function Routes() {
     return (
         <Router>
             <Switch>
                 <Route exact path="/">
                     <PrimarySearchAppBar/>
-                    <App/>
+                    <Login/>
                 </Route>
 
                 <Route exact path="/login">

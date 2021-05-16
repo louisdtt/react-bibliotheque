@@ -1,6 +1,14 @@
-import { mount } from '@cypress/react';
-import App from '../components/App';
+import React  from "react";
+import {render, fireEvent} from '@testing-library/react';
 import Login from '../components/Login'
+import { mount } from '@cypress/react';
+
+// it ("renders",() =>{
+//   const{queryByTestId} = render (<Login/>)
+
+//   expect(queryByTestId("name")).toBeTruthy()
+// })
+
 
 it('Test app', () => {
   mount(<App />);
