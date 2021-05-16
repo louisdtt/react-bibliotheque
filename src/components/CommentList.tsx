@@ -23,7 +23,6 @@ function CommentList({match}: RouteComponentProps<TParams>) {
             setComments(response.data.filter(comment => comment.book.id == +match.params.id));
         }).catch((ex) => {
             let error = 'error';
-            console.log(ex)
             setError(error);
         });
     }, []);

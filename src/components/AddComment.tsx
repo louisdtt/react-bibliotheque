@@ -42,7 +42,6 @@ function AddComment({match}: RouteComponentProps<TParams>) {
     }
 
     const handleAddComment = () => {
-        console.log("Comment", comment)
         axios.post<Comment>('http://localhost:8080/api/comment', {
             ...comment,
             headers: {

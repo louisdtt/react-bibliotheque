@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function LoadingSpinner() {
     const classes = useStyles();
     const { promiseInProgress } = usePromiseTracker();
-    console.log(promiseInProgress)
     return (
         <div>
             {promiseInProgress &&
