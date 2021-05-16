@@ -1,21 +1,20 @@
 import {Avatar, Grid} from "@material-ui/core";
-import APIAccesser from "./APIAccesser";
+import {Book} from "./BookPresenter";
+import {Customer} from "./Login";
 
-const api = APIAccesser.getInstance();
 
 export interface Comment {
     id: number;
     title: string;
     content: string;
-    customer_id: number;
-    book_id: number;
+    customer: Customer;
+    book: Book;
 }
 
 function CommentElement({...comment}: Comment) {
-    let user = api.GetUsers().find(value => value.id == comment.customer_id);
     let name = ""
-    if (user) {
-        name = user.name
+    if (comment.customer) {
+        name = comment.customer.name
     }
     console.log(name)
     return (

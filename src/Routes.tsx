@@ -3,7 +3,6 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import App from './components/App';
 import Login from './components/Login';
 import BookPresenter from "./components/BookPresenter";
-import APIAccesser from "./components/APIAccesser";
 import BookList from "./components/BookList";
 import PrimarySearchAppBar from './components/Header';
 import AddComment from "./components/AddComment";
@@ -12,8 +11,6 @@ import {Book} from "@material-ui/icons";
 import Comment from "./components/Comment";
 import CommentList from "./components/CommentList";
 import Register from './components/Register';
-
-const api = APIAccesser.getInstance();
 
 function Routes() {
     return (
@@ -46,7 +43,7 @@ function Routes() {
                             <PrimarySearchAppBar/>
                             <BookPresenter {...props} />
                             <AddComment/>
-                            <CommentList comments={api.GetComments()}/>
+                            <CommentList {...props}/>
                         </React.Fragment>
                     }
                 />
