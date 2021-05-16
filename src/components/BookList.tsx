@@ -19,7 +19,7 @@ function BookList() {
             }, timeout: 10000
         }).then(async response => {
             await delay(1000)
-            setBooks(response.data.filter(book => book.category == "enfant"));
+            setBooks(response.data);
         }).catch((ex) => {
             let error = 'error';
             setError(error);
