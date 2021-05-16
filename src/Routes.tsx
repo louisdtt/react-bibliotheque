@@ -30,7 +30,7 @@ function Routes() {
 
                 <Route exact path="/books">
                     <PrimarySearchAppBar/>
-                    <BookList books={api.GetBooks()}/>
+                    <BookList/>
                 </Route>
 
                 <Route
