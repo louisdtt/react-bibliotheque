@@ -55,16 +55,20 @@ function BookPresenter({match}: RouteComponentProps<TParams>) {
     }, []);
     if (book) {
         return (
-            <div>
-                <p>{book.title}</p>
-                <p>{book.category}</p>
-                <p>{book.author}</p>
+            <div className="wrapper">
                 <img src={`${book.cover}`}/>
+                <div className="wrapper" id="book-details">
+                    <div>
+                        <p>Title : {book.title}</p>
+                        <p>Category : {book.category}</p>
+                        <p>Author : {book.author}</p>
+                    </div>
+                    <Button variant="contained" color="primary" onClick={handleBorrowBook}>
+                        Borrow
+                    </Button>
+                    <p className="borrow">{borrowSuccess}</p>
+                </div>
                 {error && <p className="error">{error}</p>}
-                <Button variant="contained" color="primary" onClick={handleBorrowBook}>
-                    Borrow
-                </Button>
-                <p className="borrow">{borrowSuccess}</p>
             </div>
         );
     } else {

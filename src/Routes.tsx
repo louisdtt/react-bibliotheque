@@ -11,6 +11,7 @@ import {Book} from "@material-ui/icons";
 import Comment from "./components/Comment";
 import CommentList from "./components/CommentList";
 import Register from './components/Register';
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function Routes() {
     return (
@@ -33,6 +34,7 @@ function Routes() {
 
                 <Route exact path="/books">
                     <PrimarySearchAppBar/>
+                    <LoadingSpinner/>
                     <BookList/>
                 </Route>
 

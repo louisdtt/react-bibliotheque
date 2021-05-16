@@ -28,7 +28,7 @@ function CommentList({match}: RouteComponentProps<TParams>) {
         });
     }, []);
     return (
-        <div className="">
+        <div className="comment-list">
             {comments?.map(comment => (
                 <React.Fragment>
                     <CommentElement {...comment} />

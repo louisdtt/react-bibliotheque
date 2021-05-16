@@ -60,21 +60,26 @@ function AddComment({match}: RouteComponentProps<TParams>) {
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <div>
-                <TextField id="title" label="Tile" onChange={handleTitleChange}/>
-                <TextField
-                    id="content"
-                    label="Comment"
-                    multiline
-                    rows={4}
-                    placeholder="Add a public comment..."
-                    onChange={handleContentChange}
-                />
-                <Button variant="contained">
-                    Cancel
-                </Button>
-                <Button variant="contained" color="primary" onClick={handleAddComment}>
-                    Comment
-                </Button>
+                <div className="wrapper" id="field-wrapper">
+                    <TextField id="title" label="Tile" onChange={handleTitleChange}/>
+                    <TextField
+                        fullWidth
+                        id="content"
+                        label="Comment"
+                        multiline
+                        rows={4}
+                        placeholder="Add a public comment..."
+                        onChange={handleContentChange}
+                    />
+                </div>
+                <div className="wrapper" id="comment-button">
+                    <Button variant="contained">
+                        Cancel
+                    </Button>
+                    <Button variant="contained" color="primary" onClick={handleAddComment}>
+                        Comment
+                    </Button>
+                </div>
             </div>
         </form>
     );
