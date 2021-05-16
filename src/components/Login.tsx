@@ -1,4 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
+import {Redirect} from 'react-router-dom';
+
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
@@ -128,6 +130,18 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json'
       }
+    }).then(response => {
+      dispatch({
+        type: 'loginSuccess',
+        payload: 'Login Successfully'
+      });
+      window.location.href = "/books";
+    }).catch((ex) => {
+      console.log('non')
+      dispatch({
+        type: 'loginFailed',
+        payload: 'Incorrect username or password'
+      });
     })
   };
 
@@ -184,7 +198,6 @@ const Login = () => {
           </div>
         </CardContent>
         <CardActions>
-        <Link to={'/books'}>
         <Button
             variant="contained"
             size="large"
@@ -194,14 +207,12 @@ const Login = () => {
             disabled={state.isButtonDisabled}>
             Login
           </Button>
-        </Link>
           <Link to={'/register'}>
           <Button
             variant="contained"
             size="large"
             color="primary"
-            className={classes.loginBtn}
-            onClick={handleLogin}>
+            className={classes.loginBtn}>
             Create an account
           </Button>
           </Link>
