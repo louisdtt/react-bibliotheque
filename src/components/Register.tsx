@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 export interface Customer {
   id: number,
   name: string,
-  age: number,
+  my_age: number,
   category: string
 }
 
@@ -43,6 +43,8 @@ const useStyles = makeStyles((theme: Theme) =>
 //state type
 
 type State = {
+  name:string
+  age:string
   username: string
   password:  string
   isButtonDisabled: boolean
@@ -51,6 +53,8 @@ type State = {
 };
 
 const initialState:State = {
+  name: '',
+  age: '',
   username: '',
   password: '',
   isButtonDisabled: true,
@@ -60,6 +64,8 @@ const initialState:State = {
 
 type Action = { type: 'setUsername', payload: string }
   | { type: 'setPassword', payload: string }
+  | { type: 'setAge', payload: string }
+  | { type: 'setName', payload: string }
   | { type: 'setIsButtonDisabled', payload: boolean }
   | { type: 'loginSuccess', payload: string }
   | { type: 'loginFailed', payload: string }
@@ -71,6 +77,16 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         username: action.payload
+      };
+    case 'setName': 
+      return {
+        ...state,
+        name: action.payload
+      };
+    case 'setAge': 
+      return {
+        ...state,
+        age: action.payload
       };
     case 'setPassword': 
       return {
@@ -102,7 +118,7 @@ const reducer = (state: State, action: Action): State => {
   }
 }
 
-const Login = () => {
+const Register = () => {
   const classes = useStyles();
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -121,9 +137,11 @@ const Login = () => {
   }, [state.username, state.password]);
 
   const handleLogin = () => {
-    axios.post('http://localhost:8080/signin',{
-      login:state.username,
-      password:state.password,
+    axios.post('http://localhost:8080/signup',{
+    name:state.name,
+    age:state.age,
+    login:state.username,
+    password:state.password,
 
       headers: {
         'Content-Type': 'application/json'
@@ -136,6 +154,22 @@ const Login = () => {
       state.isButtonDisabled || handleLogin();
     }
   };
+  
+  const handleNameChange: React.ChangeEventHandler<HTMLInputElement> =
+    (event) => {
+      dispatch({
+        type: 'setName',
+        payload: event.target.value
+      });
+    };
+
+  const handleAgeChange: React.ChangeEventHandler<HTMLInputElement> =
+    (event) => {
+      dispatch({
+        type: 'setAge',
+        payload: event.target.value
+      });
+    };
 
   const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> =
     (event) => {
@@ -155,9 +189,31 @@ const Login = () => {
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <Card className={classes.card}>
-        <CardHeader className={classes.header} title="Login" />
+        <CardHeader className={classes.header} title="Register" />
         <CardContent>
           <div>
+          <TextField
+              error={state.isError}
+              fullWidth
+              id="name"
+              type="email"
+              label="Name"
+              placeholder="Name"
+              margin="normal"
+              onChange={handleNameChange}
+              onKeyPress={handleKeyPress}
+            />
+            <TextField
+              error={state.isError}
+              fullWidth
+              id="age"
+              type="number"
+              label="Age"
+              placeholder="Age"
+              margin="normal"
+              onChange={handleAgeChange}
+              onKeyPress={handleKeyPress}
+            />
             <TextField
               error={state.isError}
               fullWidth
@@ -184,29 +240,21 @@ const Login = () => {
           </div>
         </CardContent>
         <CardActions>
-        <Button
+        <Link to={'/login'}>
+          <Button
             variant="contained"
             size="large"
             color="primary"
             className={classes.loginBtn}
             onClick={handleLogin}
             disabled={state.isButtonDisabled}>
-            Login
+            Register
           </Button>
-          <Link to={'/register'}>
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            className={classes.loginBtn}
-            onClick={handleLogin}>
-            Create an account
-          </Button>
-          </Link>
+        </Link>
         </CardActions>
       </Card>
     </form>
   );
 }
 
-export default Login;
+export default Register;

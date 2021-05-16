@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import {Book} from "@material-ui/icons";
 import Comment from "./components/Comment";
 import CommentList from "./components/CommentList";
+import Register from './components/Register';
 
 const api = APIAccesser.getInstance();
 
@@ -26,6 +27,11 @@ function Routes() {
                 <Route exact path="/login">
                     <PrimarySearchAppBar/>
                     <Login/>
+                </Route>
+
+                <Route exact path="/register">
+                    <PrimarySearchAppBar/>
+                    <Register/>
                 </Route>
 
                 <Route exact path="/books">

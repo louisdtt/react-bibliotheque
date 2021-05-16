@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Book} from "./BookPresenter";
-import {User} from "./Login";
+import {Customer} from "./Login";
 import {Comment} from "./Comment";
 
 // Call API
@@ -151,7 +151,7 @@ class APIAccesser {
     }
 
     public GetUsers(){
-        let list: User[] = [];
+        let list: Customer[] = [];
         list.push({
             id: 1,
             name: 'Pierre',
