@@ -2,8 +2,6 @@ import React  from "react";
 import {render, fireEvent} from '@testing-library/react';
 import Login from '../components/Login'
 import { mount } from '@cypress/react';
-import App from '../components/App';
-
 
 // it ("renders",() =>{
 //   const{queryByTestId} = render (<Login/>)
