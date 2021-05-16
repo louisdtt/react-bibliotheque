@@ -25,7 +25,8 @@ code {
 
 }
 
-.wrapper .book {
+.book {
+  padding-top: 20px;
 }
 
 .wrapper .book #title {

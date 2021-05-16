@@ -184,6 +184,7 @@ const Login = () => {
           </div>
         </CardContent>
         <CardActions>
+        <Link to={'/books'}>
         <Button
             variant="contained"
             size="large"
@@ -193,6 +194,7 @@ const Login = () => {
             disabled={state.isButtonDisabled}>
             Login
           </Button>
+        </Link>
           <Link to={'/register'}>
           <Button
             variant="contained"
